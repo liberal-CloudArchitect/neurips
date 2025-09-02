@@ -1,0 +1,70 @@
+2025-08-30 18:44:14 - model_strategy_comparison - INFO - 日志文件保存至: logs/model_strategy_comparison_20250830_184414.log
+2025-08-30 18:44:14 - model_strategy_comparison - INFO - ================================================================================
+2025-08-30 18:44:14 - model_strategy_comparison - INFO - 开始模型策略对比实验 - 独立任务模型 vs 单一多输出模型
+2025-08-30 18:44:14 - model_strategy_comparison - INFO - ================================================================================
+2025-08-30 18:44:14 - model_strategy_comparison - INFO - 步骤 1: 数据预处理和准备
+2025-08-30 18:44:14 - model_strategy_comparison - INFO - 完整标签数据: 0 样本 (原始: 7973 样本)
+2025-08-30 18:44:14 - model_strategy_comparison - WARNING - 完整标签数据太少，使用所有有效数据进行对比
+2025-08-30 18:44:14 - model_strategy_comparison - WARNING - 使用FFV数据生成多输出演示数据
+2025-08-30 18:44:14 - model_strategy_comparison - INFO - 生成演示数据: 1000 样本
+2025-08-30 18:44:14 - model_strategy_comparison - INFO - 步骤 2: 特征提取
+2025-08-30 18:44:20 - model_strategy_comparison - INFO - 特征维度: (1000, 2223)
+2025-08-30 18:44:20 - model_strategy_comparison - INFO - 目标维度: (1000, 5)
+2025-08-30 18:44:20 - model_strategy_comparison - INFO - 步骤 3: 模型策略对比
+2025-08-30 18:44:20 - model_strategy_comparison - INFO - 
+=== 策略1: 独立任务模型 ===
+2025-08-30 18:44:20 - model_strategy_comparison - INFO - 独立任务策略 - 第 1 折
+2025-08-30 18:44:32 - model_strategy_comparison - INFO -   第 1 折平均MAE: 3.364136
+2025-08-30 18:44:32 - model_strategy_comparison - INFO - 独立任务策略 - 第 2 折
+2025-08-30 18:44:44 - model_strategy_comparison - INFO -   第 2 折平均MAE: 3.067810
+2025-08-30 18:44:44 - model_strategy_comparison - INFO - 独立任务策略 - 第 3 折
+2025-08-30 18:44:56 - model_strategy_comparison - INFO -   第 3 折平均MAE: 2.974914
+2025-08-30 18:44:56 - model_strategy_comparison - INFO - 独立任务策略 - 第 4 折
+2025-08-30 18:45:08 - model_strategy_comparison - INFO -   第 4 折平均MAE: 3.513512
+2025-08-30 18:45:08 - model_strategy_comparison - INFO - 独立任务策略 - 第 5 折
+2025-08-30 18:45:19 - model_strategy_comparison - INFO -   第 5 折平均MAE: 3.175797
+2025-08-30 18:45:19 - model_strategy_comparison - INFO - 独立任务策略完成 - 平均MAE: 3.219234 ± 0.196012
+2025-08-30 18:45:19 - model_strategy_comparison - INFO - 
+=== 策略2: 单一多输出模型 ===
+2025-08-30 18:45:19 - model_strategy_comparison - INFO - 多输出策略 - 第 1 折
+2025-08-30 18:45:31 - model_strategy_comparison - INFO -   第 1 折平均MAE: 3.364136
+2025-08-30 18:45:31 - model_strategy_comparison - INFO - 多输出策略 - 第 2 折
+2025-08-30 18:45:43 - model_strategy_comparison - INFO -   第 2 折平均MAE: 3.067810
+2025-08-30 18:45:43 - model_strategy_comparison - INFO - 多输出策略 - 第 3 折
+2025-08-30 18:45:55 - model_strategy_comparison - INFO -   第 3 折平均MAE: 2.974914
+2025-08-30 18:45:55 - model_strategy_comparison - INFO - 多输出策略 - 第 4 折
+2025-08-30 18:46:07 - model_strategy_comparison - INFO -   第 4 折平均MAE: 3.513512
+2025-08-30 18:46:07 - model_strategy_comparison - INFO - 多输出策略 - 第 5 折
+2025-08-30 18:46:19 - model_strategy_comparison - INFO -   第 5 折平均MAE: 3.175797
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 多输出策略完成 - 平均MAE: 3.219234 ± 0.196012
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 步骤 4: 生成对比报告
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 
+====================================================================================================
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 模型策略对比报告
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - ====================================================================================================
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 
+总体性能对比:
+2025-08-30 18:46:19 - model_strategy_comparison - INFO -   独立任务模型          平均MAE: 3.219234 ± 0.196012 训练时间: 59.2s 模型数量: 5
+2025-08-30 18:46:19 - model_strategy_comparison - INFO -   单一多输出模型         平均MAE: 3.219234 ± 0.196012 训练时间: 59.2s 模型数量: 1
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 
+各任务详细对比:
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 任务         独立模型MAE         多输出MAE          性能差异        
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - ------------------------------------------------------------
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - Tg         14.145505       14.145505        +0.00%
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - FFV        0.008854        0.008854         +0.00%
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - Tc         0.046227        0.046227         +0.00%
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - Density    0.092961        0.092961         +0.00%
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - Rg         1.802624        1.802624         +0.00%
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 
+🎯 策略分析:
+2025-08-30 18:46:19 - model_strategy_comparison - INFO -   最佳策略: 单一多输出模型
+2025-08-30 18:46:19 - model_strategy_comparison - INFO -   性能差异: 0.00%
+2025-08-30 18:46:19 - model_strategy_comparison - INFO -   📊 结论: 两种策略性能相近，建议考虑以下因素:
+2025-08-30 18:46:19 - model_strategy_comparison - INFO -     - 独立模型: 更灵活，可针对性优化，但复杂度高
+2025-08-30 18:46:19 - model_strategy_comparison - INFO -     - 多输出模型: 更简洁，训练快速，但调优受限
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 
+详细结果已保存: results/model_strategy_comparison/strategy_comparison_summary.csv
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - ====================================================================================================
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - ================================================================================
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - 模型策略对比实验完成!
+2025-08-30 18:46:19 - model_strategy_comparison - INFO - ================================================================================

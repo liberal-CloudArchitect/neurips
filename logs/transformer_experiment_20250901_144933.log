@@ -1,0 +1,90 @@
+2025-09-01 14:49:33 - transformer_experiment - INFO - 日志文件保存至: logs/transformer_experiment_20250901_144933.log
+2025-09-01 14:49:33 - transformer_experiment - INFO - ================================================================================
+2025-09-01 14:49:33 - transformer_experiment - INFO - 开始第四阶段Transformer实验 - CUSTOM模型
+2025-09-01 14:49:33 - transformer_experiment - INFO - ================================================================================
+2025-09-01 14:49:33 - transformer_experiment - INFO - 使用设备: cpu
+2025-09-01 14:49:33 - transformer_experiment - INFO - 步骤 1: 加载竞赛数据
+2025-09-01 14:49:33 - transformer_experiment - INFO - 步骤 2: 准备任务特定数据集
+2025-09-01 14:49:33 - transformer_experiment - INFO - 
+准备任务: Tg
+2025-09-01 14:49:33 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:49:33 - transformer_experiment - INFO - 任务 Tg: 20 个样本
+2025-09-01 14:49:33 - transformer_experiment - INFO - 
+准备任务: FFV
+2025-09-01 14:49:36 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:49:36 - transformer_experiment - INFO - 任务 FFV: 20 个样本
+2025-09-01 14:49:36 - transformer_experiment - INFO - 
+准备任务: Tc
+2025-09-01 14:49:36 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:49:36 - transformer_experiment - INFO - 任务 Tc: 20 个样本
+2025-09-01 14:49:36 - transformer_experiment - INFO - 
+准备任务: Density
+2025-09-01 14:49:36 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:49:36 - transformer_experiment - INFO - 任务 Density: 20 个样本
+2025-09-01 14:49:36 - transformer_experiment - INFO - 
+准备任务: Rg
+2025-09-01 14:49:36 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:49:36 - transformer_experiment - INFO - 任务 Rg: 20 个样本
+2025-09-01 14:49:36 - transformer_experiment - INFO - 步骤 3: 初始化Transformer训练器
+2025-09-01 14:49:36 - transformer_experiment - INFO - 步骤 4: 开始训练 CUSTOM Transformer模型
+2025-09-01 15:27:20 - transformer_experiment - INFO - 步骤 5: 模型性能评估
+2025-09-01 15:27:20 - transformer_experiment - INFO - 
+任务 Tg 结果:
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最佳验证MAE: 0.118653
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终训练损失: 0.176734
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终验证损失: 0.067200
+2025-09-01 15:27:20 - transformer_experiment - INFO - 
+任务 FFV 结果:
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最佳验证MAE: 0.261727
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终训练损失: 0.377534
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终验证损失: 0.247641
+2025-09-01 15:27:20 - transformer_experiment - INFO - 
+任务 Tc 结果:
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最佳验证MAE: 0.102869
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终训练损失: 0.090207
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终验证损失: 0.052635
+2025-09-01 15:27:20 - transformer_experiment - INFO - 
+任务 Density 结果:
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最佳验证MAE: 0.130030
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终训练损失: 0.106031
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终验证损失: 0.074976
+2025-09-01 15:27:20 - transformer_experiment - INFO - 
+任务 Rg 结果:
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最佳验证MAE: 0.135049
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终训练损失: 0.186454
+2025-09-01 15:27:20 - transformer_experiment - INFO -   最终验证损失: 0.051493
+2025-09-01 15:27:20 - transformer_experiment - INFO - 步骤 6: 保存实验结果
+2025-09-01 15:27:20 - transformer_experiment - INFO - 实验报告已保存: results/transformer_models/transformer_custom_experiment_report.csv
+2025-09-01 15:27:20 - transformer_experiment - INFO - 训练历史已保存: results/transformer_models/transformer_custom_training_history.pkl
+2025-09-01 15:27:20 - transformer_experiment - INFO - 步骤 7: 生成测试集预测
+2025-09-01 15:27:20 - transformer_experiment - INFO - 预测任务: Tg
+2025-09-01 15:27:20 - transformer_experiment - INFO - 预测任务: FFV
+2025-09-01 15:27:20 - transformer_experiment - INFO - 预测任务: Tc
+2025-09-01 15:27:20 - transformer_experiment - INFO - 预测任务: Density
+2025-09-01 15:27:20 - transformer_experiment - INFO - 预测任务: Rg
+2025-09-01 15:27:21 - transformer_experiment - INFO - 提交文件已保存: results/transformer_models/transformer_custom_submission.csv
+2025-09-01 15:27:21 - transformer_experiment - INFO - 
+================================================================================
+2025-09-01 15:27:21 - transformer_experiment - INFO - Transformer实验完成总结
+2025-09-01 15:27:21 - transformer_experiment - INFO - ================================================================================
+2025-09-01 15:27:21 - transformer_experiment - INFO - 总体平均MAE: 0.149666
+2025-09-01 15:27:21 - transformer_experiment - INFO - 
+各任务最佳性能:
+2025-09-01 15:27:21 - transformer_experiment - INFO -   Tg: MAE 0.118653
+2025-09-01 15:27:21 - transformer_experiment - INFO -   FFV: MAE 0.261727
+2025-09-01 15:27:21 - transformer_experiment - INFO -   Tc: MAE 0.102869
+2025-09-01 15:27:21 - transformer_experiment - INFO -   Density: MAE 0.130030
+2025-09-01 15:27:21 - transformer_experiment - INFO -   Rg: MAE 0.135049
+2025-09-01 15:27:21 - transformer_experiment - INFO - 
+模型类型: CUSTOM Transformer
+2025-09-01 15:27:21 - transformer_experiment - INFO - 设备: cpu
+2025-09-01 15:27:21 - transformer_experiment - INFO - 训练样本总数: 100
+2025-09-01 15:27:21 - transformer_experiment - INFO - 成功训练任务数: 5
+2025-09-01 15:27:21 - transformer_experiment - INFO - 分词器词汇表大小: 86
+2025-09-01 15:27:21 - transformer_experiment - INFO - 
+实验文件保存位置:
+2025-09-01 15:27:21 - transformer_experiment - INFO -   模型文件: results/transformer_models/
+2025-09-01 15:27:21 - transformer_experiment - INFO -   分词器: results/transformer_models/tokenizer_vocab.json
+2025-09-01 15:27:21 - transformer_experiment - INFO -   实验报告: results/transformer_models/transformer_custom_experiment_report.csv
+2025-09-01 15:27:21 - transformer_experiment - INFO -   训练历史: results/transformer_models/transformer_custom_training_history.pkl
+2025-09-01 15:27:21 - transformer_experiment - INFO -   提交文件: results/transformer_models/transformer_custom_submission.csv

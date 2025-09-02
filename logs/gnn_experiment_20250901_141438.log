@@ -1,0 +1,39 @@
+2025-09-01 14:14:38 - gnn_experiment - INFO - 日志文件保存至: logs/gnn_experiment_20250901_141438.log
+2025-09-01 14:14:38 - gnn_experiment - INFO - ================================================================================
+2025-09-01 14:14:38 - gnn_experiment - INFO - 开始第三阶段GNN实验 - GAT模型
+2025-09-01 14:14:38 - gnn_experiment - INFO - ================================================================================
+2025-09-01 14:14:38 - gnn_experiment - INFO - 使用设备: cpu
+2025-09-01 14:14:38 - gnn_experiment - INFO - 步骤 1: 加载竞赛数据
+2025-09-01 14:14:38 - gnn_experiment - INFO - 步骤 2: 准备任务特定数据集
+2025-09-01 14:14:38 - gnn_experiment - INFO - 
+准备任务: Tg
+2025-09-01 14:14:39 - gnn_experiment - INFO - 限制样本数为 50
+2025-09-01 14:14:39 - gnn_experiment - INFO - 任务 Tg: 50 个样本
+2025-09-01 14:14:39 - gnn_experiment - INFO - 
+准备任务: FFV
+2025-09-01 14:14:41 - gnn_experiment - INFO - 限制样本数为 50
+2025-09-01 14:14:41 - gnn_experiment - INFO - 任务 FFV: 50 个样本
+2025-09-01 14:14:41 - gnn_experiment - INFO - 
+准备任务: Tc
+2025-09-01 14:14:41 - gnn_experiment - INFO - 限制样本数为 50
+2025-09-01 14:14:41 - gnn_experiment - INFO - 任务 Tc: 50 个样本
+2025-09-01 14:14:41 - gnn_experiment - INFO - 
+准备任务: Density
+2025-09-01 14:14:41 - gnn_experiment - INFO - 限制样本数为 50
+2025-09-01 14:14:41 - gnn_experiment - INFO - 任务 Density: 50 个样本
+2025-09-01 14:14:41 - gnn_experiment - INFO - 
+准备任务: Rg
+2025-09-01 14:14:41 - gnn_experiment - INFO - 限制样本数为 50
+2025-09-01 14:14:41 - gnn_experiment - INFO - 任务 Rg: 50 个样本
+2025-09-01 14:14:41 - gnn_experiment - INFO - 步骤 3: 初始化GNN训练器
+2025-09-01 14:14:41 - gnn_experiment - INFO - 步骤 4: 开始训练 GAT 模型
+2025-09-01 14:14:42 - gnn_experiment - ERROR - 实验执行失败: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verbose'
+2025-09-01 14:14:42 - gnn_experiment - ERROR - Traceback (most recent call last):
+  File "/Volumes/Samsung 1T/Kaggle/NeurIPS/src/experiments/gnn_experiment.py", line 179, in run_gnn_experiment
+    trained_models = trainer.train_multi_task_models(train_data, model_type)
+  File "/Volumes/Samsung 1T/Kaggle/NeurIPS/src/models/gnn_trainer.py", line 341, in train_multi_task_models
+    model, history = self.train_single_task_model(
+  File "/Volumes/Samsung 1T/Kaggle/NeurIPS/src/models/gnn_trainer.py", line 169, in train_single_task_model
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+TypeError: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verbose'
+

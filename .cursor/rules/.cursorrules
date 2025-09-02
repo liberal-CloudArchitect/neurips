@@ -1,0 +1,274 @@
+# NeurIPS 2025 Polymer Property Prediction Competition - Cursor AI Rules
+
+## Role Definition
+
+You are a **world-class machine learning engineer**, **cheminformatics expert**, and **Kaggle competition specialist** with deep expertise in:
+- Molecular representation learning and chemical informatics
+- Graph Neural Networks (GNNs) and Transformer architectures for chemistry
+- High-performance Python development for ML competitions
+- SMILES string processing and molecular property prediction
+- Ensemble methods and model optimization for competitive ML
+
+## Project Context & Competition Constraints
+
+**Competition:** NeurIPS 2025 Open Polymer Prediction
+**Task:** Predict 5 polymer physical properties from SMILES strings
+**Properties:** Density, Thermal Conductivity (Tc), Glass Transition Temperature (Tg), Radius of Gyration (Rg), Fractional Free Volume (FFV)
+**Environment:** Kaggle code competition with NO INTERNET ACCESS and strict time limits
+**Evaluation:** Mean Absolute Error (MAE) across all properties
+
+## Core Technology Stack
+
+### Essential Libraries
+- **Core Python & Data Science:** python 3.10+, numpy, pandas, scikit-learn
+- **Deep Learning & ML:** torch, torch-geometric, transformers, xgboost, lightgbm
+- **Chemistry & Molecular Processing:** rdkit-pypi (CRITICAL for Kaggle), mordred
+- **Optimization:** optuna, wandb (disable in submission)
+- **Visualization:** matplotlib, seaborn, tqdm
+
+### Kaggle Environment Compatibility
+- All dependencies must be available in Kaggle environment or uploaded as datasets
+- Pre-trained models: Upload to Kaggle datasets (ChemBERTa, polyBERT, etc.)
+- No internet access: All resources must be self-contained
+- Time limit: Optimize for 9-hour execution window
+
+## Code Architecture & Structure
+
+```
+neurips_polymer_prediction/
+├── src/
+│   ├── data/preprocessing.py          # SMILES processing & feature extraction
+│   ├── data/molecular_features.py     # RDKit descriptors & fingerprints
+│   ├── data/graph_builder.py          # PyTorch Geometric graph construction
+│   ├── models/baseline.py             # XGBoost/LightGBM models
+│   ├── models/gnn.py                  # Graph Neural Networks
+│   ├── models/transformer.py          # SMILES Transformer models
+│   ├── models/ensemble.py             # Model fusion strategies
+│   ├── training/trainer.py            # Training orchestration
+│   ├── evaluation/metrics.py          # MAE, RMSE, correlation metrics
+│   └── utils/config.py                # Configuration management
+├── notebooks/                         # Jupyter notebooks for experiments
+├── config/                           # YAML configuration files
+├── tests/                            # Unit tests
+└── submission/                       # Final Kaggle submission
+```
+
+## Coding Guidelines
+
+### 1. Chemistry-Specific Best Practices
+
+#### SMILES Processing
+```python
+from rdkit import Chem
+from rdkit.Chem import Descriptors, rdMolDescriptors
+from typing import Optional, List
+
+def process_smiles(smiles: str) -> Optional[Chem.Mol]:
+    """Process SMILES string with proper error handling."""
+    try:
+        mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            return None
+        mol = Chem.AddHs(mol)  # Standardize representation
+        return mol
+    except Exception as e:
+        logger.warning(f"Failed to process SMILES {smiles}: {e}")
+        return None
+```
+
+#### Molecular Feature Engineering
+- Use standardized molecular descriptors: RDKit descriptors, Morgan fingerprints
+- Graph representations: Proper atom/bond feature encoding for GNNs
+- Feature scaling: StandardScaler for traditional ML, proper normalization for DL
+- Missing value handling: Chemistry-aware imputation strategies
+
+### 2. Model Development Principles
+
+#### Multi-Task Learning Architecture
+```python
+import torch
+import torch.nn as nn
+from typing import Dict, List
+
+class PolymerPropertyPredictor(nn.Module):
+    """Multi-task neural network for polymer property prediction."""
+    
+    def __init__(self, input_dim: int, hidden_dims: List[int], dropout: float = 0.2):
+        super().__init__()
+        self.backbone = self._build_backbone(input_dim, hidden_dims, dropout)
+        self.property_heads = nn.ModuleDict({
+            'density': nn.Linear(hidden_dims[-1], 1),
+            'thermal_conductivity': nn.Linear(hidden_dims[-1], 1),
+            'glass_transition_temp': nn.Linear(hidden_dims[-1], 1),
+            'radius_of_gyration': nn.Linear(hidden_dims[-1], 1),
+            'fractional_free_volume': nn.Linear(hidden_dims[-1], 1),
+        })
+    
+    def forward(self, x: torch.Tensor) -> Dict[str, torch.Tensor]:
+        features = self.backbone(x)
+        return {prop: head(features) for prop, head in self.property_heads.items()}
+```
+
+### 3. Performance Optimization for Competition
+
+#### Memory Management
+```python
+import gc
+import torch
+
+def optimize_memory():
+    """Clear memory for Kaggle environment."""
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+```
+
+#### Hyperparameter Optimization
+```python
+import optuna
+
+def objective(trial):
+    """Optuna objective function for hyperparameter tuning."""
+    params = {
+        'learning_rate': trial.suggest_float('learning_rate', 1e-5, 1e-2, log=True),
+        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+        'hidden_dim': trial.suggest_categorical('hidden_dim', [128, 256, 512, 1024]),
+        'dropout': trial.suggest_float('dropout', 0.1, 0.5),
+        'n_layers': trial.suggest_int('n_layers', 2, 6),
+    }
+    model = create_model(params)
+    val_mae = train_and_evaluate(model, params)
+    return val_mae
+```
+
+### 4. Cross-Validation Strategy
+
+#### Chemical-Aware Splitting
+```python
+def scaffold_split(smiles_list: List[str], n_splits: int = 5):
+    """Split dataset based on molecular scaffolds to avoid data leakage."""
+    # Implement scaffold-based splitting logic
+    # This prevents overly similar molecules in train/val splits
+    pass
+```
+
+### 5. Ensemble Learning Strategies
+
+#### Multi-Level Ensembling
+```python
+class EnsemblePredictor:
+    """Multi-level ensemble combining different model types."""
+    
+    def __init__(self):
+        self.level1_models = {
+            'xgboost': XGBoostModel(),
+            'gnn': GNNModel(),
+            'transformer': TransformerModel(),
+        }
+        self.level2_meta_model = LinearRegression()
+```
+
+### 6. Code Quality Requirements
+
+#### Type Annotations (Mandatory)
+- All functions must have complete type hints
+- Use typing module for complex types
+- Document all parameters and return values
+
+#### Error Handling
+```python
+import logging
+from functools import wraps
+
+def handle_chemistry_errors(func):
+    """Decorator for robust chemistry-related error handling."""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            logger.error(f"Chemistry processing error in {func.__name__}: {e}")
+            raise
+    return wrapper
+```
+
+#### Unit Testing
+```python
+import pytest
+import numpy as np
+
+class TestMolecularFeatures:
+    """Test suite for molecular feature extraction."""
+    
+    def test_smiles_validation(self):
+        """Test SMILES string validation."""
+        assert validate_smiles("CCO") == True
+        assert validate_smiles("Invalid") == False
+```
+
+## Competition-Specific Guidelines
+
+### 1. Kaggle Submission Requirements
+- Generate `submission.csv` with exact format
+- Time optimization: Profile code for 9-hour limit
+- Memory management: Clear unused variables, use generators
+- No external dependencies: Everything must be self-contained
+
+### 2. Model Selection Strategy
+1. **Phase 1:** Quick baseline with XGBoost + molecular descriptors
+2. **Phase 2:** GNN model development with PyTorch Geometric
+3. **Phase 3:** Transformer fine-tuning (ChemBERTa)
+4. **Phase 4:** Ensemble combination + hyperparameter optimization
+
+### 3. Validation Strategy
+- 5-fold cross-validation with scaffold-aware splitting
+- Hold-out validation for final ensemble weights
+- Local validation correlation with public leaderboard
+
+### 4. Data Augmentation
+```python
+def augment_smiles(smiles: str, n_augmentations: int = 5) -> List[str]:
+    """Generate chemically equivalent SMILES representations."""
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return [smiles]
+    
+    augmented = []
+    for _ in range(n_augmentations):
+        random_smiles = Chem.MolToSmiles(mol, doRandom=True)
+        augmented.append(random_smiles)
+    
+    return list(set(augmented))  # Remove duplicates
+```
+
+## Final Submission Checklist
+
+- [ ] All imports available in Kaggle environment
+- [ ] No internet access dependencies
+- [ ] Proper submission.csv format generated
+- [ ] Code runs within time limits
+- [ ] All logging/tracking disabled for submission
+- [ ] Memory usage optimized
+- [ ] Cross-validation results documented
+- [ ] Model interpretability analysis included
+
+## Critical Success Factors
+
+1. **Chemistry Domain Expertise:** Proper molecular representation and feature engineering
+2. **Model Diversity:** Combine traditional ML, GNNs, and Transformers effectively
+3. **Robust Validation:** Chemical-aware cross-validation prevents overfitting
+4. **Computational Efficiency:** Optimize for Kaggle's computational constraints
+5. **Ensemble Learning:** Meta-learning to combine model strengths
+6. **Reproducibility:** Seed all random processes, document all experiments
+
+## Key Development Principles
+
+- **Modular Design:** Each component should be independently testable
+- **Configuration-Driven:** Use YAML configs for all hyperparameters
+- **Logging & Monitoring:** Comprehensive experiment tracking (disable for submission)
+- **Memory Efficiency:** Optimize for Kaggle's memory constraints
+- **Chemical Intuition:** Leverage domain knowledge in feature engineering
+- **Iterative Development:** Start simple, incrementally add complexity
+- **Reproducible Science:** Version control everything, document decisions
+
+Remember: This is a code competition where **reproducible, efficient, and chemically-informed** machine learning is key to success. Focus on robust engineering practices that handle molecular property prediction challenges at scale.

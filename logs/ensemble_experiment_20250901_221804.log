@@ -1,0 +1,13 @@
+2025-09-01 22:18:04 - ensemble_experiment - INFO - 日志文件保存至: logs/ensemble_experiment_20250901_221804.log
+2025-09-01 22:18:04 - ensemble_experiment - INFO - ================================================================================
+2025-09-01 22:18:04 - ensemble_experiment - INFO - 开始第五阶段模型集成实验
+2025-09-01 22:18:04 - ensemble_experiment - INFO - ================================================================================
+2025-09-01 22:18:04 - ensemble_experiment - INFO - 步骤 1: 初始化预测生成器
+2025-09-01 22:18:04 - ensemble_experiment - ERROR - 集成实验执行失败: 'data_dir'
+2025-09-01 22:18:04 - ensemble_experiment - ERROR - Traceback (most recent call last):
+  File "/Volumes/Samsung 1T/Kaggle/NeurIPS/src/experiments/ensemble_experiment.py", line 248, in run_ensemble_experiment
+    pred_generator = PredictionGenerator(config)
+  File "/Volumes/Samsung 1T/Kaggle/NeurIPS/src/utils/prediction_generator.py", line 55, in __init__
+    self.data_dir = Path(config['data']['data_dir'])
+KeyError: 'data_dir'
+

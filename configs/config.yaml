@@ -1,0 +1,180 @@
+# 项目配置文件
+project:
+  name: "neurips_2025_polymer_prediction"
+  description: "NeurIPS 2025 公开聚合物预测竞赛"
+  version: "1.0.0"
+
+# 数据配置
+data:
+  # 数据路径
+  train_path: "data/train.csv"
+  test_path: "data/test.csv"
+  
+  # 目标变量
+  target_columns:
+    - "Tg"
+    - "FFV"
+    - "Tc"
+    - "Density"
+    - "Rg"
+  
+  # 特征列
+  smiles_column: "SMILES"
+  
+  # 验证策略
+  validation:
+    method: "kfold"
+    n_splits: 5
+    random_state: 42
+    shuffle: true
+
+# 特征工程配置
+features:
+  # Morgan指纹
+  morgan_fingerprint:
+    enabled: true
+    radius: 2
+    n_bits: 2048
+    use_features: true
+    use_chirality: true
+  
+  # MACCS分子密钥 (新增)
+  maccs_keys:
+    enabled: true  # 启用MACCS Keys特征
+    
+  # RDKit描述符
+  rdkit_descriptors:
+    use_2d: true
+    use_3d: false
+    descriptors:
+      - "MolWt"
+      - "TPSA"
+      - "LogP"
+      - "NumHDonors"
+      - "NumHAcceptors"
+      - "NumRotatableBonds"
+      - "NumAromaticRings"
+      - "FractionCsp3"
+
+# 模型配置
+models:
+  # 基线模型配置
+  baseline:
+    xgboost:
+      objective: "reg:squarederror"
+      eval_metric: "mae"
+      max_depth: 6
+      learning_rate: 0.1
+      n_estimators: 1000
+      subsample: 0.8
+      colsample_bytree: 0.8
+      random_state: 42
+      
+    lightgbm:
+      objective: "regression"
+      metric: "mae"
+      boosting_type: "gbdt"
+      num_leaves: 31
+      learning_rate: 0.1
+      feature_fraction: 0.8
+      bagging_fraction: 0.8
+      bagging_freq: 5
+      random_state: 42
+      verbose: -1
+      
+  # GNN模型配置 (第三阶段新增)
+  gnn:
+    # 网络架构
+    hidden_dim: 256
+    num_layers: 4
+    dropout: 0.2
+    pool_type: "attention"  # 'mean', 'max', 'add', 'attention', 'set2set'
+    
+    # GAT特定参数
+    num_heads: 8
+    
+    # 任务配置
+    task_names:
+      - "Density"
+      - "Tc"
+      - "Tg"
+      - "Rg"
+      - "FFV"
+
+  # Transformer模型配置 (第四阶段新增)
+  transformer:
+    # 模型架构
+    d_model: 512
+    nhead: 8
+    num_layers: 6
+    dim_feedforward: 2048
+    dropout: 0.1
+    pooling_strategy: "cls"  # 'cls', 'mean', 'max', 'attention'
+    
+    # 分词器配置
+    vocab_size: 1000
+    max_seq_length: 512
+    
+    # 预训练模型配置
+    pretrained_model_name: "DeepChem/ChemBERTa-77M-MLM"
+    freeze_encoder: false
+    num_layers_to_freeze: 0
+    
+    # 任务配置
+    task_names:
+      - "Density"
+      - "Tc"
+      - "Tg"
+      - "Rg"
+      - "FFV"
+
+# 训练配置
+training:
+  # 通用设置
+  device: "cuda"
+  mixed_precision: true
+  
+  # GNN训练参数 (第三阶段新增)
+batch_size: 32
+epochs: 100
+learning_rate: 1e-3
+weight_decay: 1e-5
+scheduler_patience: 5
+
+# Transformer训练参数 (第四阶段新增)
+transformer:
+  batch_size: 16
+  epochs: 50
+  learning_rate: 1e-4
+  weight_decay: 1e-5
+  scheduler_patience: 5
+  
+  # 早停
+  early_stopping:
+    patience: 10
+    min_delta: 1e-6
+    
+  # 损失函数
+  loss:
+    type: "smooth_l1"
+    beta: 1.0
+
+# 实验跟踪配置
+experiment:
+  # wandb配置
+  wandb:
+    enabled: true
+    project: "neurips-2025-polymer"
+    
+  # 本地日志
+  logging:
+    level: "INFO"
+    save_logs: true
+    log_dir: "logs"
+
+# 输出配置
+output:
+  results_dir: "results"
+  models_dir: "results/models"
+  predictions_dir: "results/predictions"
+  plots_dir: "results/plots"

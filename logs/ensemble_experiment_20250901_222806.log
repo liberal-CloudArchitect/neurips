@@ -1,0 +1,30 @@
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 日志文件保存至: logs/ensemble_experiment_20250901_222806.log
+2025-09-01 22:28:06 - ensemble_experiment - INFO - ================================================================================
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 开始第五阶段模型集成实验
+2025-09-01 22:28:06 - ensemble_experiment - INFO - ================================================================================
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 步骤 1: 初始化预测生成器
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 步骤 2: 加载并分割训练数据
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 步骤 3: 生成各模型预测结果
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 步骤 4: 初始化模型集成器
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 步骤 5: 准备集成训练数据
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 步骤 6: 计算各模型性能
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 步骤 7: 评估集成策略
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 
+测试集成策略: simple
+2025-09-01 22:28:06 - ensemble_experiment - INFO - simple 集成策略完成
+2025-09-01 22:28:06 - ensemble_experiment - INFO - 
+测试集成策略: weighted
+2025-09-01 22:28:07 - ensemble_experiment - INFO - weighted 集成策略完成
+2025-09-01 22:28:07 - ensemble_experiment - INFO - 
+测试集成策略: stacking
+2025-09-01 22:28:07 - ensemble_experiment - INFO - stacking 集成策略完成
+2025-09-01 22:28:07 - ensemble_experiment - INFO - 步骤 8: 保存集成实验结果
+2025-09-01 22:28:07 - ensemble_experiment - INFO - 
+============================================================
+2025-09-01 22:28:07 - ensemble_experiment - INFO - 集成实验结果摘要
+2025-09-01 22:28:07 - ensemble_experiment - INFO - ============================================================
+2025-09-01 22:28:07 - ensemble_experiment - INFO - simple       | 平均MAE: 0.063208 | 平均RMSE: 0.067105
+2025-09-01 22:28:07 - ensemble_experiment - INFO - weighted     | 平均MAE: 0.009635 | 平均RMSE: 0.012011
+2025-09-01 22:28:07 - ensemble_experiment - INFO - stacking     | 平均MAE: 0.004161 | 平均RMSE: 0.004533
+2025-09-01 22:28:07 - ensemble_experiment - INFO - ============================================================
+2025-09-01 22:28:07 - ensemble_experiment - INFO - 模型集成实验完成

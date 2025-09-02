@@ -1,0 +1,29 @@
+2025-09-01 14:32:58 - transformer_experiment - INFO - 日志文件保存至: logs/transformer_experiment_20250901_143258.log
+2025-09-01 14:32:58 - transformer_experiment - INFO - ================================================================================
+2025-09-01 14:32:58 - transformer_experiment - INFO - 开始第四阶段Transformer实验 - CUSTOM模型
+2025-09-01 14:32:58 - transformer_experiment - INFO - ================================================================================
+2025-09-01 14:32:58 - transformer_experiment - INFO - 使用设备: cpu
+2025-09-01 14:32:58 - transformer_experiment - INFO - 步骤 1: 加载竞赛数据
+2025-09-01 14:32:58 - transformer_experiment - INFO - 步骤 2: 准备任务特定数据集
+2025-09-01 14:32:58 - transformer_experiment - INFO - 
+准备任务: Tg
+2025-09-01 14:32:58 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:32:58 - transformer_experiment - INFO - 任务 Tg: 20 个样本
+2025-09-01 14:32:58 - transformer_experiment - INFO - 
+准备任务: FFV
+2025-09-01 14:33:01 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:33:01 - transformer_experiment - INFO - 任务 FFV: 20 个样本
+2025-09-01 14:33:01 - transformer_experiment - INFO - 
+准备任务: Tc
+2025-09-01 14:33:01 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:33:01 - transformer_experiment - INFO - 任务 Tc: 20 个样本
+2025-09-01 14:33:01 - transformer_experiment - INFO - 
+准备任务: Density
+2025-09-01 14:33:01 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:33:01 - transformer_experiment - INFO - 任务 Density: 20 个样本
+2025-09-01 14:33:01 - transformer_experiment - INFO - 
+准备任务: Rg
+2025-09-01 14:33:01 - transformer_experiment - INFO - 限制样本数为 20
+2025-09-01 14:33:01 - transformer_experiment - INFO - 任务 Rg: 20 个样本
+2025-09-01 14:33:01 - transformer_experiment - INFO - 步骤 3: 初始化Transformer训练器
+2025-09-01 14:33:01 - transformer_experiment - INFO - 步骤 4: 开始训练 CUSTOM Transformer模型

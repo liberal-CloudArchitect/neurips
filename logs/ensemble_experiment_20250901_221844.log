@@ -1,0 +1,13 @@
+2025-09-01 22:18:44 - ensemble_experiment - INFO - 日志文件保存至: logs/ensemble_experiment_20250901_221844.log
+2025-09-01 22:18:44 - ensemble_experiment - INFO - ================================================================================
+2025-09-01 22:18:44 - ensemble_experiment - INFO - 开始第五阶段模型集成实验
+2025-09-01 22:18:44 - ensemble_experiment - INFO - ================================================================================
+2025-09-01 22:18:44 - ensemble_experiment - INFO - 步骤 1: 初始化预测生成器
+2025-09-01 22:18:44 - ensemble_experiment - INFO - 步骤 2: 加载并分割训练数据
+2025-09-01 22:18:44 - ensemble_experiment - INFO - 步骤 3: 生成各模型预测结果
+2025-09-01 22:18:44 - ensemble_experiment - ERROR - 集成实验执行失败: PredictionGenerator.generate_all_predictions() got an unexpected keyword argument 'use_synthetic'
+2025-09-01 22:18:44 - ensemble_experiment - ERROR - Traceback (most recent call last):
+  File "/Volumes/Samsung 1T/Kaggle/NeurIPS/src/experiments/ensemble_experiment.py", line 256, in run_ensemble_experiment
+    all_predictions = pred_generator.generate_all_predictions(data, use_synthetic=True)
+TypeError: PredictionGenerator.generate_all_predictions() got an unexpected keyword argument 'use_synthetic'
+

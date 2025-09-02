@@ -1,0 +1,76 @@
+2025-08-30 18:07:50 - feature_comparison - INFO - 日志文件保存至: logs/feature_comparison_20250830_180750.log
+2025-08-30 18:07:50 - feature_comparison - INFO - ================================================================================
+2025-08-30 18:07:50 - feature_comparison - INFO - 开始特征对比实验 - 测试MACCS Keys性能提升
+2025-08-30 18:07:50 - feature_comparison - INFO - ================================================================================
+2025-08-30 18:07:50 - feature_comparison - INFO - 
+============================================================
+2025-08-30 18:07:50 - feature_comparison - INFO - 实验 1/5: Morgan_Only
+2025-08-30 18:07:50 - feature_comparison - INFO - ============================================================
+2025-08-30 18:07:50 - feature_comparison - INFO -   步骤 1: 数据预处理 - Morgan_Only
+2025-08-30 18:08:16 - feature_comparison - INFO -   特征维度: 2048
+2025-08-30 18:08:16 - feature_comparison - INFO -   步骤 2: 模型训练 - Morgan_Only
+2025-08-30 18:08:35 - feature_comparison - INFO - 实验完成 - Morgan_Only: MAE = 0.008078
+2025-08-30 18:08:35 - feature_comparison - INFO - 
+============================================================
+2025-08-30 18:08:35 - feature_comparison - INFO - 实验 2/5: Morgan_Descriptors
+2025-08-30 18:08:35 - feature_comparison - INFO - ============================================================
+2025-08-30 18:08:35 - feature_comparison - INFO -   步骤 1: 数据预处理 - Morgan_Descriptors
+2025-08-30 18:09:08 - feature_comparison - INFO -   特征维度: 2056
+2025-08-30 18:09:08 - feature_comparison - INFO -   步骤 2: 模型训练 - Morgan_Descriptors
+2025-08-30 18:09:29 - feature_comparison - INFO - 实验完成 - Morgan_Descriptors: MAE = 0.006164
+2025-08-30 18:09:29 - feature_comparison - INFO - 
+============================================================
+2025-08-30 18:09:29 - feature_comparison - INFO - 实验 3/5: Morgan_MACCS
+2025-08-30 18:09:29 - feature_comparison - INFO - ============================================================
+2025-08-30 18:09:29 - feature_comparison - INFO -   步骤 1: 数据预处理 - Morgan_MACCS
+2025-08-30 18:10:12 - feature_comparison - INFO -   特征维度: 2215
+2025-08-30 18:10:12 - feature_comparison - INFO -   步骤 2: 模型训练 - Morgan_MACCS
+2025-08-30 18:10:33 - feature_comparison - INFO - 实验完成 - Morgan_MACCS: MAE = 0.006741
+2025-08-30 18:10:33 - feature_comparison - INFO - 
+============================================================
+2025-08-30 18:10:33 - feature_comparison - INFO - 实验 4/5: All_Features
+2025-08-30 18:10:33 - feature_comparison - INFO - ============================================================
+2025-08-30 18:10:33 - feature_comparison - INFO -   步骤 1: 数据预处理 - All_Features
+2025-08-30 18:11:22 - feature_comparison - INFO -   特征维度: 2223
+2025-08-30 18:11:22 - feature_comparison - INFO -   步骤 2: 模型训练 - All_Features
+2025-08-30 18:11:44 - feature_comparison - INFO - 实验完成 - All_Features: MAE = 0.005634
+2025-08-30 18:11:44 - feature_comparison - INFO - 
+============================================================
+2025-08-30 18:11:44 - feature_comparison - INFO - 实验 5/5: MACCS_Only
+2025-08-30 18:11:44 - feature_comparison - INFO - ============================================================
+2025-08-30 18:11:44 - feature_comparison - INFO -   步骤 1: 数据预处理 - MACCS_Only
+2025-08-30 18:12:05 - feature_comparison - INFO -   特征维度: 167
+2025-08-30 18:12:05 - feature_comparison - INFO -   步骤 2: 模型训练 - MACCS_Only
+2025-08-30 18:12:15 - feature_comparison - INFO - 实验完成 - MACCS_Only: MAE = 0.007555
+2025-08-30 18:12:15 - feature_comparison - INFO - 
+====================================================================================================
+2025-08-30 18:12:15 - feature_comparison - INFO - 特征对比实验报告
+2025-08-30 18:12:15 - feature_comparison - INFO - ====================================================================================================
+2025-08-30 18:12:16 - feature_comparison - INFO - 
+任务: FFV
+2025-08-30 18:12:16 - feature_comparison - INFO - 样本数: 7892
+2025-08-30 18:12:16 - feature_comparison - INFO - 
+特征配置性能排名:
+2025-08-30 18:12:16 - feature_comparison - INFO -   1. All_Features         MAE: 0.005634 ± 0.000331 特征维度: 2223 时间: 71.6s
+2025-08-30 18:12:16 - feature_comparison - INFO -   2. Morgan_Descriptors   MAE: 0.006164 ± 0.000294 特征维度: 2056 时间: 53.7s
+2025-08-30 18:12:16 - feature_comparison - INFO -   3. Morgan_MACCS         MAE: 0.006741 ± 0.000262 特征维度: 2215 时间: 63.9s
+2025-08-30 18:12:16 - feature_comparison - INFO -   4. MACCS_Only           MAE: 0.007555 ± 0.000220 特征维度:  167 时间: 31.2s
+2025-08-30 18:12:16 - feature_comparison - INFO -   5. Morgan_Only          MAE: 0.008078 ± 0.000302 特征维度: 2048 时间: 45.6s
+2025-08-30 18:12:16 - feature_comparison - INFO - 
+性能提升分析 (vs Morgan_Only基线):
+2025-08-30 18:12:16 - feature_comparison - INFO -   All_Features         提升: +30.25% (MAE: 0.008078 → 0.005634)
+2025-08-30 18:12:16 - feature_comparison - INFO -   Morgan_Descriptors   提升: +23.70% (MAE: 0.008078 → 0.006164)
+2025-08-30 18:12:16 - feature_comparison - INFO -   Morgan_MACCS         提升: +16.55% (MAE: 0.008078 → 0.006741)
+2025-08-30 18:12:16 - feature_comparison - INFO -   MACCS_Only           提升: +6.48% (MAE: 0.008078 → 0.007555)
+2025-08-30 18:12:16 - feature_comparison - INFO - 
+🎯 MACCS Keys价值分析:
+2025-08-30 18:12:16 - feature_comparison - INFO -   Morgan Only:      MAE = 0.008078
+2025-08-30 18:12:16 - feature_comparison - INFO -   Morgan + MACCS:   MAE = 0.006741
+2025-08-30 18:12:16 - feature_comparison - INFO -   MACCS Keys提升:   +16.55%
+2025-08-30 18:12:16 - feature_comparison - INFO -   ✅ MACCS Keys有效！建议启用
+2025-08-30 18:12:16 - feature_comparison - INFO - 
+详细结果已保存: results/feature_comparison/feature_comparison_results.csv
+2025-08-30 18:12:16 - feature_comparison - INFO - ====================================================================================================
+2025-08-30 18:12:16 - feature_comparison - INFO - ================================================================================
+2025-08-30 18:12:16 - feature_comparison - INFO - 特征对比实验完成!
+2025-08-30 18:12:16 - feature_comparison - INFO - ================================================================================

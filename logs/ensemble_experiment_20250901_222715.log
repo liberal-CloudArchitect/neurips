@@ -1,0 +1,47 @@
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 日志文件保存至: logs/ensemble_experiment_20250901_222715.log
+2025-09-01 22:27:15 - ensemble_experiment - INFO - ================================================================================
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 开始第五阶段模型集成实验
+2025-09-01 22:27:15 - ensemble_experiment - INFO - ================================================================================
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 步骤 1: 初始化预测生成器
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 步骤 2: 加载并分割训练数据
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 步骤 3: 生成各模型预测结果
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 步骤 4: 初始化模型集成器
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 步骤 5: 准备集成训练数据
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 步骤 6: 计算各模型性能
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 步骤 7: 评估集成策略
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 
+测试集成策略: simple
+2025-09-01 22:27:15 - ensemble_experiment - INFO - simple 集成策略完成
+2025-09-01 22:27:15 - ensemble_experiment - INFO - 
+测试集成策略: weighted
+2025-09-01 22:27:16 - ensemble_experiment - INFO - weighted 集成策略完成
+2025-09-01 22:27:16 - ensemble_experiment - INFO - 
+测试集成策略: stacking
+2025-09-01 22:27:16 - ensemble_experiment - ERROR - 集成实验执行失败: Cannot have number of splits n_splits=5 greater than the number of samples: n_samples=1.
+2025-09-01 22:27:16 - ensemble_experiment - ERROR - Traceback (most recent call last):
+  File "/Volumes/Samsung 1T/Kaggle/NeurIPS/src/experiments/ensemble_experiment.py", line 332, in run_ensemble_experiment
+    ensemble_pred = ensemble.stacking_ensemble()
+  File "/Volumes/Samsung 1T/Kaggle/NeurIPS/src/models/ensemble.py", line 358, in stacking_ensemble
+    cv_scores = cross_val_score(
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/sklearn/model_selection/_validation.py", line 677, in cross_val_score
+    cv_results = cross_validate(
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/sklearn/model_selection/_validation.py", line 399, in cross_validate
+    results = parallel(
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 82, in __call__
+    return super().__call__(iterable_with_config_and_warning_filters)
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/joblib/parallel.py", line 1986, in __call__
+    return output if self.return_generator else list(output)
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/joblib/parallel.py", line 1911, in _get_sequential_output
+    for func, args, kwargs in iterable:
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 74, in <genexpr>
+    iterable_with_config_and_warning_filters = (
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/sklearn/model_selection/_validation.py", line 399, in <genexpr>
+    results = parallel(
+  File "/opt/anaconda3/envs/neurips/lib/python3.10/site-packages/sklearn/model_selection/_split.py", line 404, in split
+    raise ValueError(
+ValueError: Cannot have number of splits n_splits=5 greater than the number of samples: n_samples=1.
+

@@ -1,0 +1,6 @@
+2025-08-30 17:09:26 - multi_task_experiment - INFO - 日志文件保存至: logs/multi_task_experiment_20250830_170926.log
+2025-08-30 17:09:26 - multi_task_experiment - INFO - ================================================================================
+2025-08-30 17:09:26 - multi_task_experiment - INFO - 开始NeurIPS 2025多任务聚合物预测实验
+2025-08-30 17:09:26 - multi_task_experiment - INFO - ================================================================================
+2025-08-30 17:09:26 - multi_task_experiment - INFO - 步骤 1: 加载和分析竞赛数据
+2025-08-30 17:09:26 - multi_task_experiment - ERROR - 实验过程中发生错误: module 'rdkit.Chem.Descriptors' has no attribute 'FractionCsp3'

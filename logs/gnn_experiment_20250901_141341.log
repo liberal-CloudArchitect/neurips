@@ -1,0 +1,15 @@
+2025-09-01 14:13:41 - gnn_experiment - INFO - 日志文件保存至: logs/gnn_experiment_20250901_141341.log
+2025-09-01 14:13:41 - gnn_experiment - INFO - ================================================================================
+2025-09-01 14:13:41 - gnn_experiment - INFO - 开始第三阶段GNN实验 - GAT模型
+2025-09-01 14:13:41 - gnn_experiment - INFO - ================================================================================
+2025-09-01 14:13:41 - gnn_experiment - INFO - 使用设备: cpu
+2025-09-01 14:13:41 - gnn_experiment - INFO - 步骤 1: 加载竞赛数据
+2025-09-01 14:13:41 - gnn_experiment - INFO - 步骤 2: 准备任务特定数据集
+2025-09-01 14:13:41 - gnn_experiment - INFO - 
+准备任务: Tg
+2025-09-01 14:13:41 - gnn_experiment - ERROR - 实验执行失败: 'MultiTaskPreprocessor' object has no attribute 'prepare_task_data'
+2025-09-01 14:13:41 - gnn_experiment - ERROR - Traceback (most recent call last):
+  File "/Volumes/Samsung 1T/Kaggle/NeurIPS/src/experiments/gnn_experiment.py", line 117, in run_gnn_experiment
+    task_data = preprocessor.prepare_task_data(datasets, task)
+AttributeError: 'MultiTaskPreprocessor' object has no attribute 'prepare_task_data'
+

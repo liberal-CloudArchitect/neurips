@@ -1,0 +1,17 @@
+2025-08-30 18:43:43 - model_strategy_comparison - INFO - 日志文件保存至: logs/model_strategy_comparison_20250830_184343.log
+2025-08-30 18:43:43 - model_strategy_comparison - INFO - ================================================================================
+2025-08-30 18:43:43 - model_strategy_comparison - INFO - 开始模型策略对比实验 - 独立任务模型 vs 单一多输出模型
+2025-08-30 18:43:43 - model_strategy_comparison - INFO - ================================================================================
+2025-08-30 18:43:43 - model_strategy_comparison - INFO - 步骤 1: 数据预处理和准备
+2025-08-30 18:43:43 - model_strategy_comparison - INFO - 完整标签数据: 0 样本 (原始: 7973 样本)
+2025-08-30 18:43:43 - model_strategy_comparison - WARNING - 完整标签数据太少，使用所有有效数据进行对比
+2025-08-30 18:43:43 - model_strategy_comparison - WARNING - 使用FFV数据生成多输出演示数据
+2025-08-30 18:43:43 - model_strategy_comparison - INFO - 生成演示数据: 1000 样本
+2025-08-30 18:43:43 - model_strategy_comparison - INFO - 步骤 2: 特征提取
+2025-08-30 18:43:50 - model_strategy_comparison - INFO - 特征维度: (1000, 2223)
+2025-08-30 18:43:50 - model_strategy_comparison - INFO - 目标维度: (1000, 5)
+2025-08-30 18:43:50 - model_strategy_comparison - INFO - 步骤 3: 模型策略对比
+2025-08-30 18:43:50 - model_strategy_comparison - INFO - 
+=== 策略1: 独立任务模型 ===
+2025-08-30 18:43:50 - model_strategy_comparison - INFO - 独立任务策略 - 第 1 折
+2025-08-30 18:43:50 - model_strategy_comparison - ERROR - 实验过程中发生错误: "None of [Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,\n       ...\n       987, 988, 990, 991, 992, 993, 994, 996, 997, 999],\n      dtype='int64', length=800)] are in the [columns]"
