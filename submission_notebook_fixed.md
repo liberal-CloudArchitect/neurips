@@ -109,6 +109,79 @@ test_df.head()
 
 ---
 
+## 3.1. Pre-flight Check: Verify File Paths
+
+This new section will verify that all necessary directories and model files from your Kaggle dataset are accessible at the paths defined in the `Config` class. This helps to debug path-related issues early.
+
+```python
+def check_paths():
+    """Checks if all required directories and files are accessible."""
+    print("\n" + "="*60)
+    print("🔍 PRE-FLIGHT CHECK: VERIFYING FILE PATHS...")
+    print("="*60)
+    
+    all_paths_ok = True
+    
+    # --- Directories to check ---
+    dirs_to_check = {
+        "Project Files Root": cfg.PROJECT_FILES_DIR,
+        "Source Code (src)": os.path.join(cfg.PROJECT_FILES_DIR, 'src'),
+        "Baseline Models": cfg.BASELINE_MODEL_DIR,
+        "GNN Models": cfg.GNN_MODEL_DIR,
+        "Transformer Models": cfg.TRANSFORMER_MODEL_DIR,
+        "Ensemble Models": cfg.ENSEMBLE_MODEL_DIR
+    }
+    
+    print("\n--- Checking Directories ---")
+    for name, path in dirs_to_check.items():
+        if os.path.isdir(path):
+            print(f"✅ [FOUND] {name}: {path}")
+        else:
+            print(f"❌ [MISSING] {name}: {path}")
+            all_paths_ok = False
+            
+    # --- Key files to check ---
+    files_to_check = {
+        "Config File": cfg.CONFIG_FILE,
+        "Ensemble Meta-Models": os.path.join(cfg.ENSEMBLE_MODEL_DIR, 'meta_models.pkl')
+    }
+    
+    # Add model/scaler files for each target to the check list
+    for target in cfg.TARGET_COLS:
+        # Baseline
+        files_to_check[f"Baseline Model ({target})"] = os.path.join(cfg.BASELINE_MODEL_DIR, f'{target}_best_model.pkl')
+        files_to_check[f"Baseline Info ({target})"] = os.path.join(cfg.BASELINE_MODEL_DIR, f'{target}_model_info.pkl')
+        # GNN
+        files_to_check[f"GNN Model ({target})"] = os.path.join(cfg.GNN_MODEL_DIR, f'gnn_{target}_model.pth')
+        files_to_check[f"GNN Scaler ({target})"] = os.path.join(cfg.GNN_MODEL_DIR, f'gnn_{target}_scaler.pkl')
+        # Transformer
+        files_to_check[f"Transformer Model ({target})"] = os.path.join(cfg.TRANSFORMER_MODEL_DIR, f'transformer_{target}_model.pth')
+        files_to_check[f"Transformer Scaler ({target})"] = os.path.join(cfg.TRANSFORMER_MODEL_DIR, f'transformer_{target}_scaler.pkl')
+
+    print("\n--- Checking Key Files ---")
+    for name, path in files_to_check.items():
+        if os.path.isfile(path):
+            print(f"✅ [FOUND] {name}")
+        else:
+            print(f"❌ [MISSING] {name}: {path}")
+            all_paths_ok = False
+            
+    print("\n" + "="*60)
+    if all_paths_ok:
+        print("🎉 PRE-FLIGHT CHECK PASSED: All essential files and directories are in place.")
+    else:
+        print("⚠️ PRE-FLIGHT CHECK FAILED: One or more files/directories are missing.")
+        print("   Please check your Kaggle dataset structure and file names.")
+    print("="*60 + "\n")
+    
+    return all_paths_ok
+
+# Run the check
+check_paths()
+```
+
+---
+
 ## 4. Advanced Ensemble Prediction System
 
 ### 4.1 Initialize Ensemble Framework
@@ -448,7 +521,7 @@ def generate_ensemble_predictions():
             for target in cfg.TARGET_COLS:
                 weighted_pred = (
                     weights['baseline'] * baseline_preds[target] +
-                    weights['gnn'] * gnn_preds[target] + 
+                    weights['gnn'] * gnn_preds[target] +
                     weights['transformer'] * transformer_preds[target]
                 )
                 final_pred_df[target] = weighted_pred
